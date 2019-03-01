@@ -3,6 +3,7 @@ import axios from "axios";
 
 import IncidentList from "./IncidentList";
 import Search from "./Search";
+import Pagination from "./Pagination";
 
 class IndexPage extends Component {
   state = {
@@ -18,15 +19,14 @@ class IndexPage extends Component {
     });
   }
   render() {
-    let incidents = this.state.incidents.slice(0, 10)
+    let incidents = this.state.incidents.slice(0, 10);
     return (
       <div>
         <h2>Police Department of Berlin</h2>
         <p>Stolen bikes</p>
         <Search />
-        <IncidentList 
-          incidents={incidents}
-        />
+        <IncidentList incidents={incidents} />
+        <Pagination />
       </div>
     );
   }

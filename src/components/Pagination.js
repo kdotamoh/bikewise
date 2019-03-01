@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Pagination extends Component {
   render() {
     return (
-      <div style={{display: "flex"}}>
+      <div style={{ display: "flex" }}>
         <button>First</button>
         <button>Prev</button>
         <button>Next</button>

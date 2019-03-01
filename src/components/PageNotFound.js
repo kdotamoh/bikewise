@@ -1,12 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class PageNotFound extends Component {
   render() {
-    return (
-      <div>
-        Page not found
-      </div>
-    );
+    return <div>Page not found</div>;
   }
 }
 
