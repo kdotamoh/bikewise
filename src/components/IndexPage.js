@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import Incident from "./Incident";
+import IncidentList from "./IncidentList";
 
 class IndexPage extends Component {
   state = {
@@ -17,22 +17,13 @@ class IndexPage extends Component {
   }
   render() {
     console.log(this.state.incidents);
-    const { incidents } = this.state;
     return (
       <div>
-        {this.state.incidents ? (
-          incidents.map(incident => (
-            <Incident
-              id={incident.id}
-              key={incident.id}
-              title={incident.title}
-              description={incident.description}
-              occuredAt={incident.occured_at}
-            />
-          ))
-        ) : (
-          <p>Fetching Incidents</p>
-        )}
+        <h2>Police Department of Berlin</h2>
+        <p>Stolen bikes</p>
+        <IncidentList 
+          incidents={this.state.incidents}
+        />
       </div>
     );
   }
