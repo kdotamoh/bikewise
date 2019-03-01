@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import IncidentList from "./IncidentList";
+import Search from "./Search";
 
 class IndexPage extends Component {
   state = {
-    incidents: []
+    incidents: [],
+    currentPage: 1
   };
 
   componentDidMount() {
@@ -16,13 +18,14 @@ class IndexPage extends Component {
     });
   }
   render() {
-    console.log(this.state.incidents);
+    let incidents = this.state.incidents.slice(0, 10)
     return (
       <div>
         <h2>Police Department of Berlin</h2>
         <p>Stolen bikes</p>
+        <Search />
         <IncidentList 
-          incidents={this.state.incidents}
+          incidents={incidents}
         />
       </div>
     );
