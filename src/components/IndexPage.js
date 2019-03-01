@@ -4,13 +4,12 @@ import axios from "axios";
 import Incident from "./Incident";
 
 class IndexPage extends Component {
-  baseURL = "https://bikewise.org/api/v2/incidents";
   state = {
     incidents: []
   };
 
   componentDidMount() {
-    axios.get(this.baseURL).then(res => {
+    axios.get(`${process.env.REACT_APP_API_BASE}/incidents`).then(res => {
       this.setState({
         incidents: res.data.incidents
       });
