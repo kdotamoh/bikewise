@@ -6,7 +6,7 @@ class IncidentList extends Component {
     const incidents = this.props.incidents;
     return (
       <div>
-        {incidents
+        {incidents.length
           ? incidents.map(incident => (
               <Incident
                 id={incident.id}
@@ -16,7 +16,7 @@ class IncidentList extends Component {
                 occuredAt={incident.occured_at}
               />
             ))
-          : null}
+          : "Fetching..."}
       </div>
     );
   }

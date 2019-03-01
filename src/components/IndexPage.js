@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+/** @jsx jsx */
+import { Component } from "react";
 import axios from "axios";
+import { jsx } from "@emotion/core";
 
 import IncidentList from "./IncidentList";
 import Search from "./Search";
@@ -20,11 +22,21 @@ class IndexPage extends Component {
   }
   render() {
     let incidents = this.state.incidents.slice(0, 10);
+
     return (
       <div>
-        <h2>Police Department of Berlin</h2>
-        <p>Stolen bikes</p>
+        <div css={{ display: "flex" }}>
+          <div>Logo</div>
+          <div css={{ display: "flex", flexDirection: "column"}}>
+            <h2 css={{ color: "red" }}>Police Department of Berlin</h2>
+            <p>Stolen bikes</p>
+          </div>
+        </div>
         <Search />
+        <p>
+          Total stolen bikes:{" "}
+          {this.state.incidents.length ? this.state.incidents.length : null}
+        </p>
         <IncidentList incidents={incidents} />
         <Pagination />
       </div>

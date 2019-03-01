@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Global, css } from "@emotion/core";
 
-import "./App.css";
 import IndexPage from "./components/IndexPage";
 import DetailPage from "./components/DetailPage";
 import PageNotFound from "./components/PageNotFound";
@@ -11,6 +11,15 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+          <Global 
+            styles={css`
+              * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+              }
+            `}
+          />
           <Switch>
             <Route exact path="/" component={IndexPage} />
             <Route exact path="/detail/:id" component={DetailPage} />
