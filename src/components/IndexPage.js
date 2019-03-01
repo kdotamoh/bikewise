@@ -24,6 +24,7 @@ class IndexPage extends Component {
         {this.state.incidents ? (
           incidents.map(incident => (
             <Incident
+              id={incident.id}
               key={incident.id}
               title={incident.title}
               description={incident.description}

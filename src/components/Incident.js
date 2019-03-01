@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom"
 
 class Incident extends Component {
-  render() {
+  handleClick = () => {
+    this.props.history.push(`/detail/${this.props.id}`)
+  }
+  render() { 
     return (
-      <div>
+      <div onClick={this.handleClick}>
         <div>{this.props.title}</div>
         <div>{this.props.description}</div>
         <div>{this.props.occuredAt}</div>
@@ -12,4 +16,4 @@ class Incident extends Component {
   }
 }
 
-export default Incident;
+export default withRouter(Incident);
