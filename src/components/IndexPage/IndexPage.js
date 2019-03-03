@@ -2,10 +2,11 @@
 import { Component } from "react";
 import axios from "axios";
 import { jsx } from "@emotion/core";
+import * as styles from './styles'
 
-import IncidentList from "./IncidentList";
-import Search from "./Search";
-import Pagination from "./Pagination";
+import IncidentList from "../IncidentList";
+import Search from "../Search";
+import Pagination from "../Pagination";
 
 class IndexPage extends Component {
   state = {
@@ -25,10 +26,10 @@ class IndexPage extends Component {
 
     return (
       <div>
-        <div css={{ display: "flex" }}>
+        <div css={styles.flex}>
           <div>Logo</div>
-          <div css={{ display: "flex", flexDirection: "column"}}>
-            <h2 css={{ color: "red" }}>Police Department of Berlin</h2>
+          <div css={styles.flexColumn}>
+            <h2 css={styles.red}>Police Department of Berlin</h2>
             <p>Stolen bikes</p>
           </div>
         </div>

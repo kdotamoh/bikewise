@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Incident from "./Incident";
+import Incident from "../Incident";
 
 class IncidentList extends Component {
   render() {
