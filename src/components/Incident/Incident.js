@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class Incident extends Component {
   handleClick = () => {
@@ -14,6 +15,14 @@ class Incident extends Component {
       </div>
     );
   }
+}
+
+Incident.propTypes = {
+  id: PropTypes.number,
+  key: PropTypes.number,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  occuredAt: PropTypes.number
 }
 
 export default withRouter(Incident);
