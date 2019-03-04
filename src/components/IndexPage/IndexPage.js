@@ -12,16 +12,26 @@ class IndexPage extends Component {
   state = {
     incidents: [],
     filtered: [],
-    currentPage: 1
+    currentPage: 1,
+    loaded: false,
+    message: "Fetching..."
   };
 
   componentDidMount() {
-    axios.get(`${process.env.REACT_APP_API_BASE}/incidents`).then(res => {
-      this.setState({
-        incidents: res.data.incidents,
-        filtered: res.data.incidents
+    axios.get(`${process.env.REACT_APP_API_BASE}/incidents`)
+      .then(res => {
+        this.setState({
+          incidents: res.data.incidents,
+          filtered: res.data.incidents,
+          loaded: true
+        });
+      })
+      .catch(err => {
+        this.setState({
+          loaded: false,
+          message: "An error occurred. List unavailable."
+        })
       });
-    });
   }
 
   onSearch = (results) => {
@@ -48,7 +58,10 @@ class IndexPage extends Component {
           Total stolen bikes:{" "}
           {this.state.incidents.length ? this.state.incidents.length : null}
         </p>
-        <IncidentList incidents={this.state.filtered} />
+        {
+          this.state.loaded ? <IncidentList incidents={this.state.filtered} /> : this.state.message
+        }
+        
         <Pagination />
       </div>
     );

@@ -17,7 +17,7 @@ class IncidentList extends Component {
                 occuredAt={incident.occured_at}
               />
             ))
-          : "Fetching..."}
+          : "No results"}
       </div>
     );
   }
