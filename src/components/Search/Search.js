@@ -30,8 +30,11 @@ class Search extends Component {
     const regex = new RegExp(event.target.value, 'gi')
     let incidents = this.props.incidents;
     const filtered = incidents.filter(incident => {
-      if (incident.title !== null && incident.description !== null) {
-        return incident.title.match(regex) || incident.description.match(regex)
+      // if (incident.title !== null && incident.description !== null) {
+      //   return incident.title.match(regex) || incident.description.match(regex)
+      // }
+      if (incident.title !== null) {
+        return incident.title.match(regex)
       }
     })
     this.setState({
@@ -40,7 +43,6 @@ class Search extends Component {
     this.props.onSearch(filtered)
   }
   render() {
-    // console.log(this.state.filtered)
     return (
       <div style={{ display: "flex" }}>
         <input
@@ -49,22 +51,18 @@ class Search extends Component {
           onChange={this.handleSearch}
           value={this.state.title}
         />
-        {/* <input placeholder="from" /> */}
         <DatePicker
           selected={this.state.startDate}
           placeholderText="from"
           dateFormat="dd/MM/yyyy"
-          // className="form__input"
           onChange={this.onDateChange("startDate")}
         />
         <DatePicker
           selected={this.state.endDate}
           placeholderText="to"
           dateFormat="dd/MM/yyyy"
-          // className="form__input"
           onChange={this.onDateChange("endDate")}
         />
-        {/* <input placeholder="to" /> */}
         <button>Find cases</button>
       </div>
     );
