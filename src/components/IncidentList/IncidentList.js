@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Incident from "../Incident";
+import PropTypes from "prop-types";
 
 class IncidentList extends Component {
   render() {
@@ -20,6 +21,10 @@ class IncidentList extends Component {
       </div>
     );
   }
+}
+
+IncidentList.propTypes = {
+  incidents: PropTypes.array.isRequired
 }
 
 export default IncidentList;
