@@ -11,19 +11,26 @@ import Pagination from "../Pagination";
 class IndexPage extends Component {
   state = {
     incidents: [],
+    filtered: [],
     currentPage: 1
   };
 
   componentDidMount() {
     axios.get(`${process.env.REACT_APP_API_BASE}/incidents`).then(res => {
       this.setState({
-        incidents: res.data.incidents
+        incidents: res.data.incidents,
+        filtered: res.data.incidents
       });
     });
   }
-  render() {
-    let incidents = this.state.incidents.slice(0, 10);
 
+  onSearch = (results) => {
+    this.setState({
+      filtered: results
+    })
+  }
+  render() {
+    console.log(this.state.filtered)
     return (
       <div>
         <div css={styles.flex}>
@@ -33,12 +40,15 @@ class IndexPage extends Component {
             <p>Stolen bikes</p>
           </div>
         </div>
-        <Search />
+        <Search 
+          incidents={this.state.incidents}
+          onSearch={this.onSearch}
+        />
         <p>
           Total stolen bikes:{" "}
           {this.state.incidents.length ? this.state.incidents.length : null}
         </p>
-        <IncidentList incidents={incidents} />
+        <IncidentList incidents={this.state.filtered} />
         <Pagination />
       </div>
     );
