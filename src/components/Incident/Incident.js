@@ -1,6 +1,10 @@
-import React, { Component } from "react";
+/** @jsx jsx */
+import { Component } from "react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
+import { jsx } from "@emotion/core"
+
+import * as styles from "./styles"
 
 class Incident extends Component {
   handleClick = () => {
@@ -8,7 +12,7 @@ class Incident extends Component {
   };
   render() {
     return (
-      <div onClick={this.handleClick}>
+      <div onClick={this.handleClick} css={styles.incident}>
         <div>{this.props.title}</div>
         <div>{this.props.description}</div>
         <div>{this.props.occuredAt}</div>

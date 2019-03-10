@@ -1,6 +1,9 @@
-import React, { Component } from "react";
+/** @jsx jsx */
+import { Component } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { jsx } from "@emotion/core";
+import * as styles from "./styles";
 
 class Search extends Component {
   state = {
@@ -44,7 +47,7 @@ class Search extends Component {
   }
   render() {
     return (
-      <div style={{ display: "flex" }}>
+      <div css={styles.search}>
         <input
           placeholder="Search case titles"
           // onChange={this.onInputChange}

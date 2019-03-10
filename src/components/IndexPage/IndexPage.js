@@ -42,25 +42,24 @@ class IndexPage extends Component {
   render() {
     console.log(this.state.filtered)
     return (
-      <div>
-        <div css={styles.flex}>
+      <div css={styles.flexColumn}>
+        <div css={styles.header}>
           <div>Logo</div>
           <div css={styles.flexColumn}>
             <h2 css={styles.red}>Police Department of Berlin</h2>
             <p>Stolen bikes</p>
           </div>
         </div>
-        <Search 
-          incidents={this.state.incidents}
-          onSearch={this.onSearch}
-        />
-        <p>
-          Total stolen bikes:{" "}
-          {this.state.incidents.length ? this.state.incidents.length : null}
-        </p>
-        {
-          this.state.loaded ? <IncidentList incidents={this.state.filtered} /> : this.state.message
-        }
+        <div style={{transform: "translateY(-100px)"}}>
+          <Search 
+            incidents={this.state.incidents}
+            onSearch={this.onSearch}
+          />
+          
+          {
+            this.state.loaded ? <IncidentList incidents={this.state.filtered} /> : this.state.message
+          }
+        </div>
         
         <Pagination />
       </div>
