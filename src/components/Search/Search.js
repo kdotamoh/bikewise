@@ -49,6 +49,7 @@ class Search extends Component {
     return (
       <div css={styles.search}>
         <input
+          css={styles.search__input}
           placeholder="Search case titles"
           // onChange={this.onInputChange}
           onChange={this.handleSearch}
@@ -66,7 +67,7 @@ class Search extends Component {
           dateFormat="dd/MM/yyyy"
           onChange={this.onDateChange("endDate")}
         />
-        <button>Find cases</button>
+        <button css={styles.search__button}>Find cases</button>
       </div>
     );
   }

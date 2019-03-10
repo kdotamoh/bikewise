@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { Component } from "react";
+import { Component } from "react";
 import Incident from "../Incident";
 import PropTypes from "prop-types";
 import { jsx } from "@emotion/core"
@@ -23,6 +23,7 @@ class IncidentList extends Component {
                 title={incident.title}
                 description={incident.description}
                 occuredAt={incident.occured_at}
+                thumb={incident.media.image_url_thumb}
               />
             ))
           : "No results"}

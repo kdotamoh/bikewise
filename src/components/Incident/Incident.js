@@ -2,9 +2,9 @@
 import { Component } from "react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
-import { jsx } from "@emotion/core"
+import { jsx } from "@emotion/core";
 
-import * as styles from "./styles"
+import * as styles from "./styles";
 
 class Incident extends Component {
   handleClick = () => {
@@ -13,9 +13,23 @@ class Incident extends Component {
   render() {
     return (
       <div onClick={this.handleClick} css={styles.incident}>
-        <div>{this.props.title}</div>
-        <div>{this.props.description}</div>
-        <div>{this.props.occuredAt}</div>
+        <div css={styles.incident__imageContainer}>
+          {
+            this.props.thumb ? (
+              <img
+                src={this.props.thumb}
+                alt=""
+                css={styles.incident__image}
+              />
+            ) : "No image"
+          }
+        </div>
+
+        <div css={styles.incident__textContainer}>
+          <div css={styles.incident__title}>{this.props.title}</div>
+          <div css={styles.incident__description}>{this.props.description}</div>
+          <div style={{marginTop: "10px"}}>{this.props.occuredAt}</div>
+        </div>
       </div>
     );
   }
@@ -27,6 +41,6 @@ Incident.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   occuredAt: PropTypes.number
-}
+};
 
 export default withRouter(Incident);

@@ -42,7 +42,7 @@ class IndexPage extends Component {
   render() {
     console.log(this.state.filtered)
     return (
-      <div css={styles.flexColumn}>
+      <div css={styles.indexPage}>
         <div css={styles.header}>
           <div>Logo</div>
           <div css={styles.flexColumn}>
@@ -56,9 +56,10 @@ class IndexPage extends Component {
             onSearch={this.onSearch}
           />
           
-          {
+          {/* {
             this.state.loaded ? <IncidentList incidents={this.state.filtered} /> : this.state.message
-          }
+          } */}
+          <IncidentList incidents={this.state.filtered} />
         </div>
         
         <Pagination />

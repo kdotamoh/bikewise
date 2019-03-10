@@ -1,7 +1,14 @@
+export const indexPage = {
+  background: "#fafafa",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+}
+
 export const flexColumn = {
   display: "flex",
   flexDirection: "column",
-  alignItems: "center"
+  alignItems: "center",
 }
 
 export const red = {

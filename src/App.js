@@ -18,6 +18,13 @@ class App extends Component {
                 padding: 0;
                 box-sizing: border-box;
               }
+              html {
+                font-size: 62.5%;
+              }
+              body {
+                font-size: 16px;
+                font-size: 1.6rem;
+              }
             `}
           />
           <Switch>
