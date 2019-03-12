@@ -8,6 +8,8 @@ import IncidentList from "../IncidentList";
 import Search from "../Search";
 import Pagination from "../Pagination";
 
+import logo from "../../images/berlin-pd-logo.png"
+
 class IndexPage extends Component {
   state = {
     incidents: [],
@@ -44,13 +46,15 @@ class IndexPage extends Component {
     return (
       <div css={styles.indexPage}>
         <div css={styles.header}>
-          <div>Logo</div>
+          <div>
+            <img style={{maxWidth: "100px"}} src={logo} alt=""/>
+          </div>
           <div css={styles.flexColumn}>
-            <h2 css={styles.red}>Police Department of Berlin</h2>
+            <h2>Police Department of Berlin</h2>
             <p>Stolen bikes</p>
           </div>
         </div>
-        <div style={{transform: "translateY(-100px)"}}>
+        <div style={{transform: "translateY(-10rem)"}}>
           <Search 
             incidents={this.state.incidents}
             onSearch={this.onSearch}
