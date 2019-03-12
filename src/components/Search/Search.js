@@ -5,6 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { jsx } from "@emotion/core";
 import * as styles from "./styles";
 
+import icon from "../../images/search.svg"
+
 class Search extends Component {
   state = {
     title: "",
@@ -48,14 +50,18 @@ class Search extends Component {
   render() {
     return (
       <div css={styles.search}>
-        <input
-          css={styles.search__input}
-          placeholder="Search case titles"
-          // onChange={this.onInputChange}
-          onChange={this.handleSearch}
-          value={this.state.title}
-        />
-        <DatePicker
+        <label css={styles.search__field}>
+          <img css={styles.search__icon} src={icon} alt=""/>
+          <input
+            css={styles.search__input}
+            placeholder="Search case titles"
+            type="search"
+            // onChange={this.onInputChange}
+            onChange={this.handleSearch}
+            value={this.state.title}
+          />
+        </label>
+        {/* <DatePicker
           selected={this.state.startDate}
           placeholderText="from"
           dateFormat="dd/MM/yyyy"
@@ -66,8 +72,8 @@ class Search extends Component {
           placeholderText="to"
           dateFormat="dd/MM/yyyy"
           onChange={this.onDateChange("endDate")}
-        />
-        <button css={styles.search__button}>Find cases</button>
+        /> */}
+        {/* <button css={styles.search__button}>Find cases</button> */}
       </div>
     );
   }
