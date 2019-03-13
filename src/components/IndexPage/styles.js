@@ -28,10 +28,20 @@ export const header__elems = css`
   display: flex;
   width: 70vw;
   justify-content: center;
+  position: relative;
 
   img {
+    position: absolute;
+    left: 0;
     max-width: 7rem; 
     max-height: 7rem; 
-    margin-right: auto; 
+  }
+
+  div {
+    margin-top: 2rem;
   }
 `;
+
+export const header__h2 = css`
+  margin-bottom: 2rem;
+`

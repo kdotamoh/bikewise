@@ -2,13 +2,13 @@
 import { Component } from "react";
 import axios from "axios";
 import { jsx } from "@emotion/core";
-import * as styles from './styles'
+import * as styles from "./styles";
 
 import IncidentList from "../IncidentList";
 import Search from "../Search";
 import Pagination from "../Pagination";
 
-import logo from "../../images/berlin-pd-logo.png"
+import logo from "../../images/berlin-pd-logo.png";
 
 class IndexPage extends Component {
   state = {
@@ -20,11 +20,17 @@ class IndexPage extends Component {
   };
 
   componentDidMount() {
-    axios.get(`${process.env.REACT_APP_API_BASE}/incidents`)
+    axios
+      .get(`${process.env.REACT_APP_API_BASE}/incidents`)
       .then(res => {
+        let incidents = res.data.incidents.filter(
+          incident =>
+            incident.description !== null || incident.title !== null
+        );
+
         this.setState({
-          incidents: res.data.incidents,
-          filtered: res.data.incidents,
+          incidents: incidents,
+          filtered: incidents,
           loaded: true
         });
       })
@@ -32,40 +38,37 @@ class IndexPage extends Component {
         this.setState({
           loaded: false,
           message: "An error occurred. List unavailable."
-        })
+        });
       });
   }
 
-  onSearch = (results) => {
+  onSearch = results => {
     this.setState({
       filtered: results
-    })
-  }
+    });
+  };
   render() {
-    console.log(this.state.filtered)
+    console.log(this.state.filtered);
     return (
       <div css={styles.indexPage}>
-        <div css={styles.header}>   
+        <div css={styles.header}>
           <div css={styles.header__elems}>
-            <img  src={logo} alt=""/>
+            <img src={logo} alt="" />
             <div css={styles.flexColumn}>
-              <h2>Police Department of Berlin</h2>
+              <h2 css={styles.header__h2}>Police Department of Berlin</h2>
               <p>Stolen bikes</p>
             </div>
-          </div>  
+          </div>
         </div>
-        <div style={{transform: "translateY(-10rem)"}}>
-          <Search 
-            incidents={this.state.incidents}
-            onSearch={this.onSearch}
-          />
-          
+        <div style={{ transform: "translateY(-10rem)" }}>
+          <Search incidents={this.state.incidents} onSearch={this.onSearch} />
+
           {/* {
             this.state.loaded ? <IncidentList incidents={this.state.filtered} /> : this.state.message
           } */}
           <IncidentList incidents={this.state.filtered} />
         </div>
-        
+
         <Pagination />
       </div>
     );
