@@ -24,6 +24,7 @@ class App extends Component {
               body {
                 font-size: 16px;
                 font-size: 1.6rem;
+                font-family: "Inter Regular"
               }
             `}
           />

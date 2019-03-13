@@ -38,6 +38,7 @@ export const incident__textContainer = css`
 `
 
 export const incident__title = css`
+  font-family: "Inter Medium";
   font-size: 2rem;
   margin-bottom: 1rem;
   height: 20%;

@@ -12,3 +12,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+@font-face {
+  font-family: "Inter Regular";
+  src: url("./fonts/Inter-Regular.woff2") format("woff2")
+}
+
+@font-face {
+  font-family: "Inter Medium";
+  src: url("./fonts/Inter-Medium.woff2") format("woff2")
+}
+
+@font-face {
+  font-family: "Inter Bold";
+  src: url("./fonts/Inter-Bold.woff2") format("woff2")
+}
+
+@font-face {
+  font-family: "Objektiv Light";
+  src: url("./fonts/Objektiv-Mk1-Light.otf") format("otf")
+}
+
+@font-face {
+  font-family: "Objektiv Regular";
+  src: url("./fonts/Objektiv-Mk1-Regular.otf") format("otf")
+}
+
+@font-face {
+  font-family: "Objektiv Bold";
+  src: url("./fonts/Objektiv-Mk1-Bold.otf") format("otf")
+}
