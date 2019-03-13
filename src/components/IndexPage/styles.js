@@ -1,25 +1,37 @@
-export const indexPage = {
-  background: "#fafafa",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-}
+import { css } from "@emotion/core";
 
-export const flexColumn = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-}
+export const indexPage = css`
+  background: #f4f7f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
-export const red = {
-  color: "red"
-}
+export const flexColumn = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
-export const header = {
-  display: "flex",
-  justifyContent: "center",
-  paddingTop: "50px",
-  height: "300px",
-  background: "blue",
-  width: "100%"
-}
+export const header = css`
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  padding-top: 50px;
+  height: 300px;
+  background: #250066;
+  width: 100%;
+  color: #fff;
+`;
+
+export const header__elems = css`
+  display: flex;
+  width: 70vw;
+  justify-content: center;
+
+  img {
+    max-width: 7rem; 
+    max-height: 7rem; 
+    margin-right: auto; 
+  }
+`;

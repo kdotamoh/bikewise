@@ -45,14 +45,14 @@ class IndexPage extends Component {
     console.log(this.state.filtered)
     return (
       <div css={styles.indexPage}>
-        <div css={styles.header}>
-          <div>
-            <img style={{maxWidth: "100px"}} src={logo} alt=""/>
-          </div>
-          <div css={styles.flexColumn}>
-            <h2>Police Department of Berlin</h2>
-            <p>Stolen bikes</p>
-          </div>
+        <div css={styles.header}>   
+          <div css={styles.header__elems}>
+            <img  src={logo} alt=""/>
+            <div css={styles.flexColumn}>
+              <h2>Police Department of Berlin</h2>
+              <p>Stolen bikes</p>
+            </div>
+          </div>  
         </div>
         <div style={{transform: "translateY(-10rem)"}}>
           <Search 

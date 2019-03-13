@@ -1,10 +1,12 @@
-export const incidentList = {
-  background: "#fff",
-  minHeight: "500px",
-  borderBottomLeftRadius: "8px",
-  borderBottomRightRadius: "8px",
-  padding: "4px",
-  width: "70vw",
-  textAlign: "center",
-  boxShadow: "0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08)"
-}
+import { css } from "@emotion/core";
+
+export const incidentList = css`
+  background: #fff;
+  min-height: 500px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 4px;
+  width: 70vw;
+  text-align: center;
+  box-shadow: 0 2px 4px 0 rgba(14,30,37,.12);
+`

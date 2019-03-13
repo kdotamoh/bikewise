@@ -27,7 +27,7 @@ class Incident extends Component {
 
         <div css={styles.incident__textContainer}>
           <div css={styles.incident__title}>{this.props.title}</div>
-          <div css={styles.incident__description}>{this.props.description}</div>
+          {this.props.description ? <div css={styles.incident__description}>{this.props.description}</div>: <em style={{color: "#757575"}}>No description</em>}
           <div style={{marginTop: "10px"}}>{this.props.occuredAt}</div>
         </div>
       </div>
