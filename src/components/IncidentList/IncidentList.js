@@ -11,9 +11,11 @@ class IncidentList extends Component {
     const incidents = this.props.incidents;
     return (
       <div css={styles.incidentList}>
-        <p>
+        <p style={{fontFamily: "Inter Medium"}}>
           Total stolen bikes:{" "}
-          {incidents.length ? incidents.length : null}
+          <span style={{textDecoration: "underline"}}>
+            {incidents.length ? incidents.length : null}
+          </span>
         </p>
         {incidents.length
           ? incidents.map(incident => (
@@ -22,7 +24,8 @@ class IncidentList extends Component {
                 key={incident.id}
                 title={incident.title}
                 description={incident.description}
-                occuredAt={incident.occured_at}
+                occurredAt={incident.occurred_at}
+                address={incident.address}
                 thumb={incident.media.image_url_thumb}
               />
             ))

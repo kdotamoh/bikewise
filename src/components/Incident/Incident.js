@@ -12,7 +12,7 @@ class Incident extends Component {
   };
   render() {
     return (
-      <div onClick={this.handleClick} css={styles.incident}>
+      <div css={styles.incident}>
         <div css={styles.incident__imageContainer}>
           {
             this.props.thumb ? (
@@ -26,9 +26,10 @@ class Incident extends Component {
         </div>
 
         <div css={styles.incident__textContainer}>
-          <div css={styles.incident__title}>{this.props.title}</div>
+          <div onClick={this.handleClick} css={styles.incident__title}>{this.props.title}</div>
           {this.props.description ? <div css={styles.incident__description}>{this.props.description}</div>: <em style={{color: "#757575"}}>No description</em>}
-          <div style={{marginTop: "10px"}}>{this.props.occuredAt}</div>
+          {/* <div style={{marginTop: "10px"}}>{Date.parse(this.props.occurredAt)}</div> */}
+          <div css={[styles.incident__address]}>{this.props.address}</div>
         </div>
       </div>
     );

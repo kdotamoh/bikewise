@@ -1,14 +1,16 @@
 import { css } from "@emotion/core";
 
 export const incident = css`
-  // margin: 10px;
-  // border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
   min-height: 150px;
   display: flex;
   align-items: center;
   padding: 2rem;
   text-align: left;
+  position: relative;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #eee;
+  }
 `
 
 export const incident__imageContainer = css`
@@ -42,8 +44,21 @@ export const incident__title = css`
   font-size: 2rem;
   margin-bottom: 1rem;
   height: 20%;
+  text-decoration: underline;
+
+  &:hover {
+    cursor: pointer;
+    color: #250066
+  }
 `
 
 export const incident__description = css`
-  font-size: ""
+  font-size: "";
+  margin-bottom: 4rem;
+`
+export const incident__address = css`
+  font-size: 80%;
+  position: absolute;
+  bottom: 2rem;
+  color: #757575;
 `
