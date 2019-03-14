@@ -56,7 +56,7 @@ export const incident__description = css`
   font-size: "";
   margin-bottom: 4rem;
 `
-export const incident__address = css`
+export const incident__details = css`
   font-size: 80%;
   position: absolute;
   bottom: 2rem;
