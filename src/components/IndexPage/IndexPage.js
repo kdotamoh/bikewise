@@ -3,6 +3,7 @@ import { Component } from "react";
 import axios from "axios";
 import { css, jsx } from "@emotion/core";
 
+import LoadedState from "../hoc/LoadedState";
 import IncidentList from "../IncidentList";
 import Search from "../Search";
 import Pagination from "../Pagination";
@@ -13,6 +14,8 @@ const indexPage = css`
   flex-direction: column;
   align-items: center;
 `;
+
+const WithLoading = LoadedState(IncidentList);
 
 class IndexPage extends Component {
   state = {
@@ -60,7 +63,8 @@ class IndexPage extends Component {
           {/* {
             this.state.loaded ? <IncidentList incidents={this.state.filtered} /> : this.state.message
           } */}
-          <IncidentList incidents={this.state.filtered} />
+          <WithLoading isLoaded={this.state.loaded} incidents={this.state.filtered} message={this.state.message}/>
+          {/* <IncidentList incidents={this.state.filtered} /> */}
           <Pagination />
         </div>
 
