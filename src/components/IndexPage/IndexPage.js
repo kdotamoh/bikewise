@@ -1,14 +1,18 @@
 /** @jsx jsx */
 import { Component } from "react";
 import axios from "axios";
-import { jsx } from "@emotion/core";
-import * as styles from "./styles";
+import { css, jsx } from "@emotion/core";
 
 import IncidentList from "../IncidentList";
 import Search from "../Search";
 import Pagination from "../Pagination";
 
-import logo from "../../images/berlin-pd-logo.png";
+const indexPage = css`
+  background: #f4f7f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 class IndexPage extends Component {
   state = {
@@ -24,8 +28,7 @@ class IndexPage extends Component {
       .get(`${process.env.REACT_APP_API_BASE}/incidents`)
       .then(res => {
         let incidents = res.data.incidents.filter(
-          incident =>
-            incident.description !== null || incident.title !== null
+          incident => incident.description !== null || incident.title !== null
         );
 
         this.setState({
@@ -50,16 +53,7 @@ class IndexPage extends Component {
   render() {
     console.log(this.state.filtered);
     return (
-      <div css={styles.indexPage}>
-        <div css={styles.header}>
-          <div css={styles.header__elems}>
-            <img src={logo} alt="" />
-            <div css={styles.flexColumn}>
-              <h2 css={styles.header__h2}>Police Department of Berlin</h2>
-              <p>Stolen bikes</p>
-            </div>
-          </div>
-        </div>
+      <div css={indexPage}>
         <div style={{ transform: "translateY(-10rem)" }}>
           <Search incidents={this.state.incidents} onSearch={this.onSearch} />
 
@@ -67,9 +61,9 @@ class IndexPage extends Component {
             this.state.loaded ? <IncidentList incidents={this.state.filtered} /> : this.state.message
           } */}
           <IncidentList incidents={this.state.filtered} />
+          <Pagination />
         </div>
 
-        <Pagination />
       </div>
     );
   }
