@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { Component } from "react";
-import { css, jsx } from "@emotion/core"
+import { css, jsx } from "@emotion/core";
+import { Link } from "react-router-dom";
 
 import logo from "../images/berlin-pd-logo.png";
 
@@ -49,7 +50,9 @@ class Header extends Component {
     return (
       <div css={header}>
         <div css={header__elems}>
-          <img src={logo} alt="" />
+          <Link to="/">
+            <img src={logo} alt="" />
+          </Link>
           <div css={flexColumn}>
             <h2 css={header__h2}>Police Department of Berlin</h2>
             <p>Stolen bikes</p>

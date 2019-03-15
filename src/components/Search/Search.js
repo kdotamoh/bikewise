@@ -40,7 +40,7 @@ class Search extends Component {
       // }
       if (incident.title !== null) {
         return incident.title.match(regex)
-      }
+      } else return incident;
     })
     this.setState({
       filtered: filtered

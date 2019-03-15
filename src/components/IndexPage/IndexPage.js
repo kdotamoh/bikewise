@@ -13,9 +13,27 @@ const indexPage = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
 `;
 
-const WithLoading = LoadedState(IncidentList);
+const loading = css`
+  background: #fff;
+  height: 100px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 20px 4px 4px 4px;
+  width: 70vw;
+  text-align: center;
+  box-shadow: 0 2px 4px 0 rgba(14, 30, 37, 0.12);
+`;
+
+const loader = (props) => (
+  <div css={loading}>
+    {props.message}
+  </div>
+)
+
+const WithLoading = LoadedState(loader);
 
 class IndexPage extends Component {
   state = {
@@ -54,7 +72,6 @@ class IndexPage extends Component {
     });
   };
   render() {
-    console.log(this.state.filtered);
     return (
       <div css={indexPage}>
         <div style={{ transform: "translateY(-10rem)" }}>
@@ -63,8 +80,10 @@ class IndexPage extends Component {
           {/* {
             this.state.loaded ? <IncidentList incidents={this.state.filtered} /> : this.state.message
           } */}
-          <WithLoading isLoaded={this.state.loaded} incidents={this.state.filtered} message={this.state.message}/>
-          {/* <IncidentList incidents={this.state.filtered} /> */}
+          <WithLoading isLoaded={this.state.loaded} message={this.state.message}>
+            <IncidentList incidents={this.state.filtered}/>
+          </WithLoading>
+
           <Pagination />
         </div>
 
