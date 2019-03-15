@@ -20,10 +20,17 @@ const header = css`
   background: #250066;
   width: 100%;
   color: #fff;
+
+  @media (max-width: 720px) {
+    align-items: flex-start;
+    padding-top: 2rem;
+    text-align: center;
+  }
 `;
 
 const header__elems = css`
   display: flex;
+  flex-direction: row;
   width: 70vw;
   justify-content: center;
   position: relative;
@@ -38,11 +45,25 @@ const header__elems = css`
   div {
     margin-top: 2rem;
   }
+
+  @media (max-width: 720px) {
+    flex-direction: column;
+    padding: top: 0;
+
+    img {
+      position: unset;
+      max-height: 5rem;
+    }
+  }
 `;
 
 const header__h2 = css`
   font-size: 3rem;
   margin-bottom: 2rem;
+
+  @media (max-width: 720px) {
+    font-size: 1.8rem;
+  }
 `;
 
 class Header extends Component {

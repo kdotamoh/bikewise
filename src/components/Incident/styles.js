@@ -3,6 +3,7 @@ import { css } from "@emotion/core";
 export const incident = css`
   min-height: 150px;
   display: flex;
+  flex-direction: row;
   align-items: center;
   padding: 2rem;
   text-align: left;
@@ -10,6 +11,11 @@ export const incident = css`
 
   &:not(:last-child) {
     border-bottom: 1px solid #eee;
+  }
+
+  @media (max-width: 720px) {
+    flex-direction: column; 
+    text-align: center;
   }
 `
 
@@ -22,6 +28,10 @@ export const incident__imageContainer = css`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 720px) {
+    margin-bottom: 2rem;
+  }
 `
 
 export const incident__image = css`
@@ -61,4 +71,9 @@ export const incident__details = css`
   position: absolute;
   bottom: 2rem;
   color: #757575;
+
+  @media (max-width: 720px) {
+    position: unset;
+    margin-top: auto;
+  }
 `
