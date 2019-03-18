@@ -1,4 +1,5 @@
 import { css } from "@emotion/core";
+import { mq } from "../constants"
 
 export const incidentList = css`
   background: #fff;
@@ -9,4 +10,8 @@ export const incidentList = css`
   width: 70vw;
   text-align: center;
   box-shadow: 0 2px 4px 0 rgba(14,30,37,.12);
+
+  ${mq[0]} {
+    width: 85vw;
+  }
 `

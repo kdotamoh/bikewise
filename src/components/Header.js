@@ -4,6 +4,7 @@ import { css, jsx } from "@emotion/core";
 import { Link } from "react-router-dom";
 
 import logo from "../images/berlin-pd-logo.png";
+import { mq } from "./constants"
 
 const flexColumn = css`
   display: flex;
@@ -21,7 +22,7 @@ const header = css`
   width: 100%;
   color: #fff;
 
-  @media (max-width: 720px) {
+  ${mq[0]} {
     align-items: flex-start;
     padding-top: 2rem;
     text-align: center;
@@ -46,7 +47,7 @@ const header__elems = css`
     margin-top: 2rem;
   }
 
-  @media (max-width: 720px) {
+  ${mq[0]} {
     flex-direction: column;
     padding: top: 0;
 
@@ -61,7 +62,7 @@ const header__h2 = css`
   font-size: 3rem;
   margin-bottom: 2rem;
 
-  @media (max-width: 720px) {
+  ${mq[0]} {
     font-size: 1.8rem;
   }
 `;

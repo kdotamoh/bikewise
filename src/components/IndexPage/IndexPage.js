@@ -8,6 +8,8 @@ import IncidentList from "../IncidentList";
 import Search from "../Search";
 import Pagination from "../Pagination";
 
+import { mq } from "../constants"
+
 const indexPage = css`
   background: #f4f7f8;
   display: flex;
@@ -15,6 +17,14 @@ const indexPage = css`
   align-items: center;
   min-height: 100vh;
 `;
+
+const indexPage__transform = css`
+  transform: translateY(-10rem);
+
+  ${mq[0]} {
+    transform: translateY(-6rem)
+  }
+`
 
 const loading = css`
   background: #fff;
@@ -25,6 +35,10 @@ const loading = css`
   width: 70vw;
   text-align: center;
   box-shadow: 0 2px 4px 0 rgba(14, 30, 37, 0.12);
+
+  ${mq[0]} {
+    width: 85vw;
+  }
 `;
 
 const loader = (props) => (
@@ -74,7 +88,7 @@ class IndexPage extends Component {
   render() {
     return (
       <div css={indexPage}>
-        <div style={{ transform: "translateY(-10rem)" }}>
+        <div css={indexPage__transform}>
           <Search incidents={this.state.incidents} onSearch={this.onSearch} />
 
           {/* {

@@ -1,4 +1,5 @@
 import { css } from "@emotion/core";
+import { mq } from "../constants"
 
 export const search = css`
   display: flex;
@@ -9,6 +10,11 @@ export const search = css`
   background: #fff;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+
+  ${mq[0]} {
+    height: 7.5rem;
+    width: 85vw;
+  }
 `
 
 export const search__field = css`

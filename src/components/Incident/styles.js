@@ -1,4 +1,5 @@
 import { css } from "@emotion/core";
+import { mq } from "../constants"
 
 export const incident = css`
   min-height: 150px;
@@ -8,12 +9,13 @@ export const incident = css`
   padding: 2rem;
   text-align: left;
   position: relative;
+  overflow-wrap: break-word;
 
   &:not(:last-child) {
     border-bottom: 1px solid #eee;
   }
 
-  @media (max-width: 720px) {
+  ${mq[0]} {
     flex-direction: column; 
     text-align: center;
   }
@@ -29,7 +31,7 @@ export const incident__imageContainer = css`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 720px) {
+  ${mq[0]} {
     margin-bottom: 2rem;
   }
 `
@@ -72,7 +74,7 @@ export const incident__details = css`
   bottom: 2rem;
   color: #757575;
 
-  @media (max-width: 720px) {
+  ${mq[0]} {
     position: unset;
     margin-top: auto;
   }
