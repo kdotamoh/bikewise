@@ -3,7 +3,7 @@ import { Component } from "react";
 import { css, jsx } from "@emotion/core";
 import { Link } from "react-router-dom";
 
-import logo from "../images/berlin-pd-logo.png";
+import logo from "../images/berlin-pd-logo-min.png";
 import { mq } from "../constants"
 
 const flexColumn = css`
