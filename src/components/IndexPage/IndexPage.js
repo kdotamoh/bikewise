@@ -53,7 +53,7 @@ class IndexPage extends Component {
   state = {
     incidents: [],
     filtered: [],
-    currentPage: 1,
+    currentPage: 0,
     loaded: false,
     message: "Fetching..."
   };
@@ -85,7 +85,31 @@ class IndexPage extends Component {
       filtered: results
     });
   };
+
+  handlePaginateNext = () => {
+    let  { currentPage } = this.state;
+    let pages = Math.floor(this.state.incidents.length / 10)
+    if (currentPage < pages) {
+      this.setState({
+        currentPage: currentPage + 1
+      })
+    }
+  }
+
+  handlePaginatePrev = () => {
+    let  { currentPage } = this.state;
+    if (currentPage > 0) {
+      this.setState({
+        currentPage: currentPage - 1
+      })
+    }
+  }
   render() {
+    let incidentLength = this.state.incidents.length
+    let currentStart = (this.state.currentPage * 10)
+    let currentEnd = currentStart + 10
+    let selection = this.state.filtered.slice(currentStart, currentEnd)
+    console.log(selection)
     return (
       <div css={indexPage}>
         <div css={indexPage__transform}>
@@ -95,10 +119,14 @@ class IndexPage extends Component {
             this.state.loaded ? <IncidentList incidents={this.state.filtered} /> : this.state.message
           } */}
           <WithLoading isLoaded={this.state.loaded} message={this.state.message}>
-            <IncidentList incidents={this.state.filtered}/>
+            {/* <IncidentList incidents={this.state.filtered} length={incidentLength}/> */}
+            <IncidentList incidents={selection} length={incidentLength}/>
           </WithLoading>
 
-          <Pagination />
+          <Pagination 
+            onPaginateNext={this.handlePaginateNext} 
+            onPaginatePrev={this.handlePaginatePrev}
+          />
         </div>
 
       </div>

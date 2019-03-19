@@ -1,5 +1,5 @@
 import { css } from "@emotion/core";
-import { mq } from "../constants"
+import { mq } from "../../constants"
 
 export const incidentList = css`
   background: #fff;

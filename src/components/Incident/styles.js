@@ -1,5 +1,5 @@
 import { css } from "@emotion/core";
-import { mq } from "../constants"
+import { mq } from "../../constants"
 
 export const incident = css`
   min-height: 150px;

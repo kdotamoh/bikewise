@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.7",
     "axios": "^0.18.0",
+    "lodash": "^4.17.11",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
     "react-datepicker": "^2.1.0",

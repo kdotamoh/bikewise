@@ -14,7 +14,7 @@ class IncidentList extends Component {
         <p style={{fontFamily: "Inter Medium"}}>
           Total stolen bikes:{" "}
           <span style={{textDecoration: "underline"}}>
-            {incidents.length ? incidents.length : null}
+            {this.props.length ? this.props.length : null}
           </span>
         </p>
         {incidents.length
@@ -36,7 +36,8 @@ class IncidentList extends Component {
 }
 
 IncidentList.propTypes = {
-  incidents: PropTypes.array.isRequired
+  incidents: PropTypes.array.isRequired,
+  length: PropTypes.number
 }
 
 export default IncidentList;

@@ -4,7 +4,7 @@ import { css, jsx } from "@emotion/core";
 import { Link } from "react-router-dom";
 
 import logo from "../images/berlin-pd-logo.png";
-import { mq } from "./constants"
+import { mq } from "../constants"
 
 const flexColumn = css`
   display: flex;
