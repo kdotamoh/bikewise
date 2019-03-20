@@ -4,6 +4,7 @@ import axios from "axios";
 import { css, jsx } from "@emotion/core";
 
 import LoadedState from "../hoc/LoadedState";
+import Map from "../Map"
 
 const detailPage = css`
   background: #f4f7f8;
@@ -51,21 +52,48 @@ class DetailPage extends Component {
       updated_at: null,
       url: null
     },
-    loaded: false
+    location: {
+      "type": "",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "id": null,
+            "type": null,
+            "occurred_at": null
+          },
+          "geometry": {
+            "type": null,
+            "coordinates": []
+          }
+        }
+      ]
+    },
+    loaded: false,
+    mapLoaded: false
   };
   componentDidMount() {
     const { id } = this.props.match.params;
-    axios.get(`${process.env.REACT_APP_API_BASE}/incidents/${id}`).then(res => {
-      this.setState({
-        incident: res.data.incident,
-        loaded: true
+    axios.get(`${process.env.REACT_APP_API_BASE}/incidents/${id}`)
+      .then(res => {
+        this.setState({
+          incident: res.data.incident,
+          loaded: true
+        });
+        return axios.get(`${process.env.REACT_APP_API_BASE}/locations?occurred_before=${res.data.incident.occurred_at}&occurred_after=${res.data.incident.occurred_at}&proximity_square=100`)
+      })
+      .then(res => {
+        this.setState({
+          location: res.data,
+          mapLoaded: true
+        })
       });
-    });
+      
   }
   render() {
-    console.log(this.state.incident);
     let { incident } = this.state;
     const date = new Date(incident.occurred_at * 1000).toDateString();
+    const center = this.state.location.features[0].geometry.coordinates
     return (
         <div css={detailPage}>
           <WithLoading isLoaded={this.state.loaded} incident={this.state.incident}>
@@ -76,6 +104,10 @@ class DetailPage extends Component {
 
               <div><strong>Description of Incident</strong></div>
               <div>{incident.description}</div>
+              {
+                this.state.mapLoaded ? <Map location={this.state.location} center={center}/> : "Loading map"
+              }
+              
           </WithLoading>
         </div>
     );

@@ -8,7 +8,7 @@ import IncidentList from "../IncidentList";
 import Search from "../Search";
 import Pagination from "../Pagination";
 
-import { mq } from "../constants"
+import { mq } from "../../constants"
 
 const indexPage = css`
   background: #f4f7f8;
