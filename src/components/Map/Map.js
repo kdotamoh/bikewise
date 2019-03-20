@@ -36,7 +36,8 @@ class Map extends Component {
   }
   render() {
     const style = {
-      width: '100%'
+      width: '100%',
+      minHeight: '50vh'
     }
     return (
       <div style={style} ref={el => this.mapContainer = el} />

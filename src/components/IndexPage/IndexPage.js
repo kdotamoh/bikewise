@@ -93,6 +93,7 @@ class IndexPage extends Component {
       this.setState({
         currentPage: currentPage + 1
       })
+      window.scrollTo(0, 0)
     }
   }
 
@@ -102,6 +103,7 @@ class IndexPage extends Component {
       this.setState({
         currentPage: currentPage - 1
       })
+      window.scrollTo(0, 0)
     }
   }
   render() {
@@ -115,18 +117,18 @@ class IndexPage extends Component {
         <div css={indexPage__transform}>
           <Search incidents={this.state.incidents} onSearch={this.onSearch} />
 
-          {/* {
-            this.state.loaded ? <IncidentList incidents={this.state.filtered} /> : this.state.message
-          } */}
           <WithLoading isLoaded={this.state.loaded} message={this.state.message}>
-            {/* <IncidentList incidents={this.state.filtered} length={incidentLength}/> */}
             <IncidentList incidents={selection} length={incidentLength}/>
           </WithLoading>
 
-          <Pagination 
-            onPaginateNext={this.handlePaginateNext} 
-            onPaginatePrev={this.handlePaginatePrev}
-          />
+          {
+            this.state.loaded ? (
+              <Pagination 
+                onPaginateNext={this.handlePaginateNext} 
+                onPaginatePrev={this.handlePaginatePrev}
+              />
+            ) : null
+          }
         </div>
 
       </div>

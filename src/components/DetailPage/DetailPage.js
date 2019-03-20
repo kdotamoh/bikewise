@@ -16,6 +16,10 @@ const mb2rem = css`
   margin-bottom: 2rem;
 `
 
+const mt2rem = css`
+  margin-top: 2rem;
+`
+
 const title = css`
   font-size: 2.2rem;
 `;
@@ -101,13 +105,13 @@ class DetailPage extends Component {
               <div css={mb2rem}>
                 <span><strong>{incident.type} &sdot; </strong> <strong>{date}</strong>, at <strong>{incident.address}</strong></span>
               </div>
-
-              <div><strong>Description of Incident</strong></div>
-              <div>{incident.description}</div>
-              {
-                this.state.mapLoaded ? <Map location={this.state.location} center={center}/> : "Loading map"
-              }
               
+              {
+                this.state.mapLoaded ? <Map location={this.state.location} center={center}/> : "Loading map..."
+              }
+
+              <div css={mt2rem}><strong>Description of Incident</strong></div>
+              <div>{incident.description}</div>
           </WithLoading>
         </div>
     );
