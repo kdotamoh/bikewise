@@ -82,14 +82,13 @@ class DetailPage extends Component {
       .then(res => {
         this.setState({
           incident: res.data.incident,
-          loaded: true
         });
         return axios.get(`${process.env.REACT_APP_API_BASE}/locations?occurred_before=${res.data.incident.occurred_at}&occurred_after=${res.data.incident.occurred_at}&proximity_square=100`)
       })
       .then(res => {
         this.setState({
           location: res.data,
-          mapLoaded: true
+          loaded: true
         })
       });
       
@@ -107,7 +106,7 @@ class DetailPage extends Component {
               </div>
               
               {
-                this.state.mapLoaded ? <Map location={this.state.location} center={center}/> : "Loading map..."
+                this.state.loaded ? <Map location={this.state.location} center={center}/> : "Loading map..."
               }
 
               <div css={mt2rem}><strong>Description of Incident</strong></div>

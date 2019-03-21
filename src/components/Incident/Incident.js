@@ -13,7 +13,7 @@ class Incident extends Component {
   render() {
     let date = new Date(this.props.occurredAt * 1000).toDateString()
     return (
-      <div css={styles.incident}>
+      <div css={styles.incident} onClick={this.handleClick}>
         <div css={styles.incident__imageContainer}>
           {
             this.props.thumb ? (
@@ -27,7 +27,7 @@ class Incident extends Component {
         </div>
 
         <div css={styles.incident__textContainer}>
-          <div onClick={this.handleClick} css={styles.incident__title}>{this.props.title}</div>
+          <div css={styles.incident__title}>{this.props.title}</div>
           {this.props.description ? <div css={styles.incident__description}>{this.props.description}</div>: <em style={{color: "#757575"}}>No description</em>}
           <div css={[styles.incident__details]}>{date} &sdot; {this.props.address}</div>
         </div>

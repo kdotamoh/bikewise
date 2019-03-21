@@ -15,6 +15,11 @@ export const incident = css`
     border-bottom: 1px solid #eee;
   }
 
+  &:hover {
+    cursor: pointer;
+    background: #f6f6f6;
+  }
+
   ${mq[0]} {
     flex-direction: column; 
     text-align: center;

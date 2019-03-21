@@ -10,7 +10,7 @@ class Map extends Component {
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/streets-v9',
       center: this.coords,
-      zoom: 12
+      zoom: 14
     });
 
     this.map.on('load', () => {

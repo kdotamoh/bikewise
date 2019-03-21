@@ -11,7 +11,7 @@ class IncidentList extends Component {
     const incidents = this.props.incidents;
     return (
       <div css={styles.incidentList}>
-        <p style={{fontFamily: "Inter Medium"}}>
+        <p style={{fontFamily: "Inter Medium", marginBottom: "2rem"}}>
           Total stolen bikes:{" "}
           <span style={{textDecoration: "underline"}}>
             {this.props.length ? this.props.length : null}
