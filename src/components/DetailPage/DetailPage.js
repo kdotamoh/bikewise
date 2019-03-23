@@ -78,7 +78,8 @@ class DetailPage extends Component {
   };
   componentDidMount() {
     const { id } = this.props.match.params;
-    axios.get(`${process.env.REACT_APP_API_BASE}/incidents/${id}`)
+    const URL = `${process.env.REACT_APP_API_BASE}/incidents/${id}`
+    axios.get(URL)
       .then(res => {
         this.setState({
           incident: res.data.incident,
@@ -86,31 +87,38 @@ class DetailPage extends Component {
         return axios.get(`${process.env.REACT_APP_API_BASE}/locations?occurred_before=${res.data.incident.occurred_at}&occurred_after=${res.data.incident.occurred_at}&proximity_square=100`)
       })
       .then(res => {
-        this.setState({
-          location: res.data,
-          loaded: true
-        })
+        console.log(res.data)
+        if (res.data.features.length) {
+          this.setState({
+            location: res.data,
+            loaded: true
+          })
+        } else {
+          this.setState({
+            loaded: true
+          })
+        }
       });
       
   }
   render() {
     let { incident } = this.state;
     const date = new Date(incident.occurred_at * 1000).toDateString();
-    const center = this.state.location.features[0].geometry.coordinates
+    const center = this.state.location.features[0].geometry.coordinates || null
     return (
         <div css={detailPage}>
           <WithLoading isLoaded={this.state.loaded} incident={this.state.incident}>
-              <div css={[title, mb2rem]}>{incident.title}</div>
-              <div css={mb2rem}>
-                <span><strong>{incident.type} &sdot; </strong> <strong>{date}</strong>, at <strong>{incident.address}</strong></span>
-              </div>
-              
-              {
-                this.state.loaded ? <Map location={this.state.location} center={center}/> : "Loading map..."
-              }
+            <div css={[title, mb2rem]}>{incident.title}</div>
+            <div css={mb2rem}>
+              <span><strong>{incident.type} &sdot; </strong> <strong>{date}</strong>, at <strong>{incident.address}</strong></span>
+            </div>
+            
+            {
+              center.length ? <Map location={this.state.location} center={center}/> : <div style={{color: "#757575"}}>No location data</div>
+            }
 
-              <div css={mt2rem}><strong>Description of Incident</strong></div>
-              <div>{incident.description}</div>
+            <div css={mt2rem}><strong>Description of Incident</strong></div>
+            <div style={{color: "#757575", marginTop: "2rem"}}>{incident.description ? incident.description : "No description"}</div>
           </WithLoading>
         </div>
     );
