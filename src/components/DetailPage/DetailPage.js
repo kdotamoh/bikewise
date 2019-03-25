@@ -10,6 +10,10 @@ const detailPage = css`
   background: #f4f7f8;
   min-height: calc(100vh - 300px);
   padding: 4rem 8rem;
+
+  @media (max-width: 768px){
+    padding: 4rem 2rem;
+  }
 `;
 
 const mb2rem = css`
@@ -90,7 +94,6 @@ class DetailPage extends Component {
         );
       })
       .then(res => {
-        console.log(res.data);
         if (res.data.features.length) {
           this.setState({
             location: res.data,

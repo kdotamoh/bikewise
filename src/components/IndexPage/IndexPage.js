@@ -111,7 +111,6 @@ class IndexPage extends Component {
     let currentStart = (this.state.currentPage * 10)
     let currentEnd = currentStart + 10
     let selection = this.state.filtered.slice(currentStart, currentEnd)
-    console.log(selection)
     return (
       <div css={indexPage}>
         <div css={indexPage__transform}>

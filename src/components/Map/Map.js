@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+/** @jsx jsx */
+import { Component } from 'react';
 import mapboxgl from "mapbox-gl";
+import { css, jsx } from "@emotion/core";
 
 mapboxgl.accessToken = `${process.env.REACT_APP_MAPBOX_TOKEN}`
 
@@ -35,12 +37,16 @@ class Map extends Component {
     this.map.remove()
   }
   render() {
-    const style = {
-      width: '100%',
-      minHeight: '50vh'
-    }
+    const style = css`
+      min-height: 50vh;
+      width: 70%;
+
+      @media (max-width: 780px) {
+        width: 100%;
+      }
+    `
     return (
-      <div style={style} ref={el => this.mapContainer = el} />
+      <div css={style} ref={el => this.mapContainer = el} />
         
     );
   }
