@@ -2,6 +2,7 @@
 import { Component } from "react";
 import axios from "axios";
 import { css, jsx } from "@emotion/core";
+import "mapbox-gl/dist/mapbox-gl.css"
 
 import LoadedState from "../hoc/LoadedState";
 import Map from "../Map";
@@ -11,7 +12,7 @@ const detailPage = css`
   min-height: calc(100vh - 300px);
   padding: 4rem 8rem;
 
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     padding: 4rem 2rem;
   }
 `;
@@ -79,24 +80,20 @@ class DetailPage extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     const URL = `${process.env.REACT_APP_API_BASE}/incidents/${id}`;
-    axios
-      .get(URL)
-      .then(res => {
-        this.setState({
-          incident: res.data.incident
-        });
-        return axios.get(
+    const getLocation = async () => {
+      try {
+        const incidentData = await axios.get(URL);
+        const { incident } = await incidentData.data;
+        this.setState({ incident });
+        const locationData = await axios.get(
           `${process.env.REACT_APP_API_BASE}/locations?occurred_before=${
-            res.data.incident.occurred_at
-          }&occurred_after=${
-            res.data.incident.occurred_at
-          }&proximity_square=100`
+            incident.occurred_at
+          }&occurred_after=${incident.occurred_at}&proximity_square=100`
         );
-      })
-      .then(res => {
-        if (res.data.features.length) {
+        const location = await locationData.data;
+        if (location.features.length) {
           this.setState({
-            location: res.data,
+            location,
             loaded: true
           });
         } else {
@@ -104,7 +101,12 @@ class DetailPage extends Component {
             loaded: true
           });
         }
-      });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    
+    getLocation();
   }
   render() {
     let { incident } = this.state;
