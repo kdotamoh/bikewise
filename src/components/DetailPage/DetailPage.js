@@ -80,15 +80,22 @@ class DetailPage extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     const URL = `${process.env.REACT_APP_API_BASE}/incidents/${id}`;
-    const getLocation = async () => {
+    const getIncident = async () => {
       try {
         const incidentData = await axios.get(URL);
         const { incident } = await incidentData.data;
         this.setState({ incident });
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    const getLocation = async () => {
+      try {
+        await getIncident();
         const locationData = await axios.get(
           `${process.env.REACT_APP_API_BASE}/locations?occurred_before=${
-            incident.occurred_at
-          }&occurred_after=${incident.occurred_at}&proximity_square=100`
+            this.state.incident.occurred_at
+          }&occurred_after=${this.state.incident.occurred_at}&proximity_square=100`
         );
         const location = await locationData.data;
         if (location.features.length) {
